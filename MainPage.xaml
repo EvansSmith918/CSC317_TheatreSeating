@@ -12,7 +12,14 @@
 
             <HorizontalStackLayout x:Name="layoutSeatingControls" Margin="25" Spacing="25">
                 <Button Text="Reserve a Seat" Clicked="ButtonReserveSeat"/>
-                <Button Text="Reserve a Seat Range" Clicked="ButtonReserveRange"/>
+                <Button Text="Reserve a Seat Range" 
+                Clicked="ButtonReserveRange"
+                Text="Reserve Range" 
+                Clicked="ButtonReserveRange" 
+                BackgroundColor="#333388"
+                TextColor="White"
+                Padding="10"
+                Margin="5"/>
                 <Button Text="Cancel Reservation" Clicked="ButtonCancelReservation"/>
                 <Button Text="Cancel Reservation Range" Clicked="ButtonCancelReservationRange"/>
                 <Button Text="Reset Seating Chart" Clicked="ButtonResetSeatingChart"/>
