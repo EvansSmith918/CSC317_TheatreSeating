@@ -119,7 +119,48 @@ namespace ExampleGitHubSetup
         //Assign to Team 1 Member
         private void ButtonReserveRange(object sender, EventArgs e)
         {
-            //a comment
+            
+    var input = await DisplayPromptAsync("Reserve Seat Range", "Enter seat range (e.g., A1:A4):");
+    if (string.IsNullOrWhiteSpace(input))
+        return;
+
+    string[] parts = input.Split(':');
+    if (parts.Length != 2)
+    {
+        await DisplayAlert("Error", "Invalid format! Use A1:A4.", "OK");
+        return;
+    }
+
+    string startSeat = parts[0];
+    string endSeat = parts[1];
+
+    // Extract row and columns with error handling
+    if (!char.IsLetter(startSeat[0]) || !char.IsLetter(endSeat[0]) || 
+        startSeat.Length < 2 || endSeat.Length < 2 || 
+        !int.TryParse(startSeat.Substring(1), out int startCol) || 
+        !int.TryParse(endSeat.Substring(1), out int endCol))
+    {
+        await DisplayAlert("Error", "Invalid seat format! Use A1:A4.", "OK");
+        return;
+    }
+
+    char startRow = char.ToUpper(startSeat[0]);
+    char endRow = char.ToUpper(endSeat[0]);
+
+    // Validation
+    if (startRow != endRow || startCol < 1 || endCol < 1 || 
+        startCol > 10 || endCol > 10 || startCol > endCol)
+    {
+        await DisplayAlert("Error", "Invalid seat range! Must be same row, between 1-10, and start <= end.", "OK");
+        return;
+    }
+
+    // Get row index (A=0, B=1, etc.)
+    int rowIndex = startRow - 'A';
+    if (rowIndex < 0 || rowIndex >= seatingChart.GetLength(0))
+    {
+        await DisplayAlert("Error", "Invalid row! Must be A-E.", "OK");
+        return;
         }
 
         //Assign to Team 2 Member
