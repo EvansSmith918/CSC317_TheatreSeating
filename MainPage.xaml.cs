@@ -163,10 +163,24 @@ namespace ExampleGitHubSetup
         return;
         }
 
-        //Assign to Team 2 Member
+        //Assign to Team 2 Member (Ryan Mitchell)
         private void ButtonCancelReservation(object sender, EventArgs e)
         {
+            var seat = await DisplayPromptAsync("Cancel Reservation","Enter a seat number ");
+            if (string.IsNullOrEmpty(seat)) return;
+            {
+                await DisplayAlert("Error", "Invalid format!", "OK");
+                return;
+            if (!seatingChart[row,col].Reserved)
+            {
+                await DisplayAlert("Error", "This seat is not reserved","OK");
+                return;
+            }
+            seatingChart[row,col].Reserved = false;
+            await DisplayAlert ("Success",$"Reservation for {seat} has been canceled","OK");
+            RefreshSeating();
 
+            }
         }
 
         //Assign to Team 3 Member
