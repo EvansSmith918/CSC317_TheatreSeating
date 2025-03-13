@@ -20,7 +20,13 @@
                 TextColor="White"
                 Padding="10"
                 Margin="5"/>
-                <Button Text="Cancel Reservation" Clicked="ButtonCancelReservation"/>
+                <Button Text="Cancel Reservation" 
+                Clicked="ButtonCancelReservation"
+                Text="CancelReservation"
+                TextColor="White"
+                Padding="10"
+                Margin="5"
+                BackgroundColor="DarkRed"/>
                 <Button Text="Cancel Reservation Range" Clicked="ButtonCancelReservationRange"/>
                 <Button Text="Reset Seating Chart" Clicked="ButtonResetSeatingChart"/>
             </HorizontalStackLayout>
