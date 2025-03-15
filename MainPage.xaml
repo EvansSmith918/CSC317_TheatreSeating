@@ -29,6 +29,10 @@
                 BackgroundColor="DarkRed"/>
                 <Button Text="Cancel Reservation Range" Clicked="ButtonCancelReservationRange"/>
                 <Button Text="Reset Seating Chart" Clicked="ButtonResetSeatingChart"/>
+                TextColor="White"
+                Padding="10"
+                Margin="5"
+                BackgroundColor="Red">
             </HorizontalStackLayout>
         </VerticalStackLayout>
 
