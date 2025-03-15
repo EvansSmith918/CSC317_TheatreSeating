@@ -189,10 +189,37 @@ namespace ExampleGitHubSetup
 
         }
 
-        //Assign to Team 4 Member
-        private void ButtonResetSeatingChart(object sender, EventArgs e)
+        //Assign to Team 4 Member (Kristian Day)
+        private async void ButtonResetSeatingChart(object sender, EventArgs e)
         {
+            // Ask user for input
+            var input = await DisplayPromptAsync("Reset Seating Chart", "Type YES to confirm reset: ");
 
+            // Check if user entered "YES"
+            if (input != null && input.ToUpper() == "YES")
+            {
+                // Loop all seats and set them to available
+                for (int row = 0; row < seatingChart.GetLength(0); row++)
+                {
+                    for (int col = 0; col < seatingChart.GetLength(1); col++)
+                    {
+                        // Update Seating Chart
+                        seatingChart[row, col].Reserved = false;
+                    }
+                }
+
+                // Show a success message
+                await DisplayAlert("Success", "All seats have been reset.", "Ok");
+
+                // Update the seating chart
+                RefreshingSeating();
+            }
+            else
+            {
+                // Show Error Message if input is not "YES"
+                await DisplayAlert("Error", "Reset Failed. Type 'YES' to confirm.", "Ok");
+            
+            }
         }
     }
 
